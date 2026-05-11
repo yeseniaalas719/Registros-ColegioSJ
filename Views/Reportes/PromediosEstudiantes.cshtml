@@ -1,0 +1,87 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Panel de Reportería Académica";
+
+   
+    var nombres = Model.Select(m => (string)m.Estudiante).ToArray();
+    var promedios = Model.Select(m => (decimal)m.Promedio).ToArray();
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">Registros ColegioSJ</h1>
+        <p class="lead text-muted">Panel de control de rendimiento académico individual</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-header bg-dark text-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i>Lista de Estudiantes</h5>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <th class="text-center">Promedio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Estudiante</td>
+                                    <td class="text-center">
+                                        <span class="badge bg-primary rounded-pill p-2">@Math.Round(item.Promedio, 2)</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card shadow border-0 p-4">
+                <h5 class="text-muted mb-4">Visualización de Calificaciones</h5>
+                <canvas id="graficaPromedios" style="max-height: 400px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('graficaPromedios').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(nombres)),
+                datasets: [{
+                    label: 'Promedio General',
+                    data: @Html.Raw(Json.Serialize(promedios)),
+                    backgroundColor: 'rgba(13, 110, 253, 0.7)',
+                    borderColor: 'rgba(13, 110, 253, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Nota (0 - 10)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+}
