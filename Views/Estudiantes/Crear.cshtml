@@ -1,0 +1,39 @@
+﻿@model Registros_ColegioSJ.Models.Estudiante
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h5 class="mb-0">Registrar Nuevo Alumno</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Crear">
+                        <div class="mb-3">
+                            <label class="form-label">Nombres</label>
+                            <input asp-for="Nombre" class="form-control" placeholder="Ej. Juan Carlos" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellidos</label>
+                            <input asp-for="Apellido" class="form-control" placeholder="Ej. Pérez" required />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Grado</label>
+                                <input asp-for="Grado" class="form-control" placeholder="Ej. 9no Grado" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <input asp-for="FechaNacimiento" type="date" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">Guardar Estudiante</button>
+                            <a asp-action="Index" class="btn btn-light">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ColegioSJ.Models
+namespace Registros_ColegioSJ.Models
 {
     public class Expediente
     {

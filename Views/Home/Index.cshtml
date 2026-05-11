@@ -48,7 +48,9 @@
                     </div>
                     <h5 class="card-title fw-bold">Estudiantes</h5>
                     <p class="card-text text-muted small">Registrar nuevos alumnos, ver el listado completo y gestionar expedientes personales.</p>
-                    <a href="#" class="btn btn-outline-primary rounded-pill mt-auto disabled">Próximamente</a>
+                    <a asp-controller="Estudiantes" asp-action="Index" class="btn btn-primary rounded-pill mt-auto shadow-sm">
+                        <i class="bi bi-arrow-right-circle me-1"></i> Ir a Registros
+                    </a>
                 </div>
             </div>
         </div>
@@ -62,7 +64,9 @@
                     </div>
                     <h5 class="card-title fw-bold">Calificaciones</h5>
                     <p class="card-text text-muted small">Cargar notas finales por asignatura y actualizar evaluaciones de los alumnos.</p>
-                    <a href="#" class="btn btn-outline-success rounded-pill mt-auto disabled">Próximamente</a>
+                    <a asp-controller="Calificaciones" asp-action="Index" class="btn btn-outline-success w-100 rounded-pill">
+                        <i class="bi bi-journal-check me-2"></i> Ingresar Notas
+                    </a>
                 </div>
             </div>
         </div>
@@ -77,7 +81,9 @@
                     </div>
                     <h5 class="card-title fw-bold text-primary">Análisis de Rendimiento</h5>
                     <p class="card-text text-muted small">Visualizar la gráfica de promedios generales y el ranking de estudiantes actuales.</p>
-                    <a asp-controller="Reportes" asp-action="PromediosEstudiantes" class="btn btn-primary rounded-pill mt-auto fw-bold">Ver Reportes Actuales</a>
+                    <a asp-controller="Reportes" asp-action="PromediosEstudiantes" class="btn btn-primary w-100 rounded-pill shadow-sm">
+                        <i class="bi bi-bar-chart-line-fill me-2"></i> Ver Gráficas
+                    </a>
                 </div>
             </div>
         </div>

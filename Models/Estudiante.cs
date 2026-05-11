@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ColegioSJ.Models
+namespace Registros_ColegioSJ.Models
 {
     public class Estudiante
     {

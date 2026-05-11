@@ -1,5 +1,4 @@
-﻿using ColegioSJ.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Registros_ColegioSJ.Models;
 using System;
 
