@@ -1,12 +1,23 @@
 ﻿@model Registros_ColegioSJ.Models.Expediente
 
-<div class="container mt-5">
+<div class="container mt-2">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-dark mb-0">
+            <i class="bi bi-pencil-square me-2"></i>Ingreso de Calificaciones
+        </h2>
+        
+        <a asp-action="Index" class="btn btn-primary rounded-pill px-4 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i> Volver al Listado
+        </a>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-success text-white py-3">
                     <h5 class="mb-0 text-center"><i class="bi bi-pencil-fill me-2"></i>Ingreso de Calificaciones</h5>
                 </div>
+
                 <div class="card-body p-4">
                     <form asp-action="Registrar">
                         

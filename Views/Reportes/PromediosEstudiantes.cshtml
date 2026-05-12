@@ -7,10 +7,16 @@
     var promedios = Model.Select(m => (decimal)m.Promedio).ToArray();
 }
 
-<div class="container mt-5">
-    <div class="text-center mb-5">
-        <h1 class="display-4 text-primary fw-bold">Registros ColegioSJ</h1>
-        <p class="lead text-muted">Panel de control de rendimiento académico individual</p>
+<div class="container mt-2">
+ 
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="fw-bold text-dark mb-0">
+            <i class="bi bi-bar-chart-fill text-black me-2"></i>Registros Colegio San José
+        </h2>
+    
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-pill px-4 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i> Volver al Inicio
+        </a>
     </div>
 
     <div class="row">
@@ -48,6 +54,19 @@
                 <h5 class="text-muted mb-4">Visualización de Calificaciones</h5>
                 <canvas id="graficaPromedios" style="max-height: 400px;"></canvas>
             </div>
+
+            <div class="card shadow border-0 p-4 mt-4">
+                <h5 class="text-muted mb-3 text-center">Estado de Alumnos (Aprobados vs Reprobados)</h5>
+    
+                @{
+                    var totalAprobados = Model.Count(x => x.Promedio >= 6.0m);
+                    var totalReprobados = Model.Count(x => x.Promedio < 6.0m);
+                }
+
+                <div class="mx-auto" style="width: 250px;">
+                    <canvas id="graficaEstado"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -82,6 +101,35 @@
                     legend: { display: false }
                 }
             }
+        });
+    </script>
+
+
+    <script>
+      
+        var ctxEstado = document.getElementById('graficaEstado').getContext('2d');
+        var graficaEstado = new Chart(ctxEstado, {
+        type: 'doughnut',
+        data: {
+        labels: ['Aprobados', 'Reprobados'],
+        datasets: [{
+        
+        data: [@totalAprobados, @totalReprobados],
+        backgroundColor: [
+        '#28a745', // Verde para aprobados
+        '#dc3545'  // Rojo para reprobados
+        ],
+        borderWidth: 2
+        }]
+        },
+        options: {
+        responsive: true,
+        plugins: {
+        legend: {
+        position: 'bottom'
+        }
+        }
+        }
         });
     </script>
 }
