@@ -28,9 +28,7 @@ La aplicación fue desarrollada utilizando **C#** bajo la arquitectura MVC. La i
 
 ## 🚀 Instalación y Uso
 
-**1. Clonar el repositorio:**
-
-```bash
+bash
 git clone [https://github.com/yeseniaalas719/Registros-ColegioSJ.git]
 
 > **Nota:** La base de datos SQLite se creará automáticamente al ejecutar el proyecto por primera vez, no necesitas configuraciones adicionales.
