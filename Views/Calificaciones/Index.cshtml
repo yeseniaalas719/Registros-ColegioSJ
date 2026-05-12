@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Registros_ColegioSJ.Models.Expediente>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-journal-check me-2"></i>Historial de Calificaciones</h2>
+        <a asp-action="Registrar" class="btn btn-success rounded-pill px-4 shadow-sm">
+            <i class="bi bi-plus-circle me-2"></i>Cargar Nueva Nota
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0 align-middle text-center">
+                <thead class="table-success text-success">
+                    <tr>
+                        <th class="text-start ps-4">Estudiante</th>
+                        <th>Asignatura</th>
+                        <th>Nota Final</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-muted py-4">Aún no hay calificaciones registradas.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-start ps-4 fw-bold text-primary">
+                                    @(item.Estudiante != null ? $"{item.Estudiante.Nombre} {item.Estudiante.Apellido}" : "Sin asignar")
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        @(item.Asignatura != null ? item.Asignatura.NombreAsignatura : "Sin asignar")
+                                    </span>
+                                </td>
+                                <td>
+                                    @{
+                                        string colorClase = item.NotaFinal >= 6.0m ? "text-success" : "text-danger";
+                                    }
+                                    <h5 class="mb-0 fw-bold @colorClase">@item.NotaFinal</h5>
+                                    <h5 class="mb-0 fw-bold @colorClase">@item.NotaFinal</h5>
+                                </td>
+                                <td class="text-muted small">@item.Observaciones</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

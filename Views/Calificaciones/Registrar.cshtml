@@ -1,0 +1,46 @@
+﻿@model Registros_ColegioSJ.Models.Expediente
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white py-3">
+                    <h5 class="mb-0 text-center"><i class="bi bi-pencil-fill me-2"></i>Ingreso de Calificaciones</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Registrar">
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Seleccionar Estudiante</label>
+                            <select asp-for="EstudianteId" class="form-select" asp-items="ViewBag.Estudiantes">
+                                <option value="">-- Seleccione Estudiante --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Materia / Asignatura</label>
+                            <select asp-for="AsignaturaId" class="form-select" asp-items="ViewBag.Asignaturas">
+                                <option value="">-- Seleccione Materia --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nota Final (0.0 - 10.0)</label>
+                            <input asp-for="NotaFinal" class="form-control form-control-lg text-center" placeholder="0.0" step="0.1" type="number" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Observaciones</label>
+                            <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Excelente desempeño"></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill">Guardar Calificación</button>
+                            <a asp-action="Index" class="btn btn-light rounded-pill">Ver Listado</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
